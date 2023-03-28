@@ -10,7 +10,7 @@
       "ESNext"
     ],
     "jsx": "react-jsx",
-    "noEmit": true,
+    "noEmit": false,
     "isolatedModules": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -18,7 +18,8 @@
     "resolveJsonModule": true,
     "strict": true,
     "strictNullChecks": true,
-    // "allowJs": true,
+    "outDir": "./dist",
+    "noImplicitAny": true,
   },
   "include": ["src/**/*"],
   "exclude": [
