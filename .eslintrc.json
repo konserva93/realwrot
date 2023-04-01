@@ -33,8 +33,8 @@
     "arrow-parens": 0,
     "object-curly-newline": [
       "error", {
-        "ObjectExpression": "always",
-        "ObjectPattern": {"multiline": false}
+        "ObjectExpression": { "multiline": true, "minProperties": 1 },
+        "ObjectPattern": { "multiline": false }
       }
     ]
   },

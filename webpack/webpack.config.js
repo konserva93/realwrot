@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
   devtool: 'inline-source-map',
-  devServer: { hot: true, port: 5000 },
+  devServer: { hot: true, port: 5000, historyApiFallback: true },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },

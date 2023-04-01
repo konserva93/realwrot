@@ -1,61 +1,132 @@
 import { sendRequest } from '../../common/network';
 
+export type TUserData = {
+  email: string,
+  username: string,
+  bio: string | null,
+  image: string,
+  token: string,
+};
+
+export function isUserData(data: unknown): data is TUserData {
+  const userData = data as TUserData;
+  return (
+    'email' in userData
+      && 'username' in userData
+      && 'bio' in userData
+      && 'image' in userData
+      && 'token' in userData
+  );
+}
+
+type TUserResponse = {
+  user: TUserData,
+};
+
+export type TUserErrors = Record<string, Array<string>>;
+
+type TUserErrorResponse = {
+  errors: TUserErrors,
+};
+
+async function handleUserResponse(response: Response) {
+  return new Promise<TUserData | TUserErrors>((resolve, reject) => {
+    if (response.ok) {
+      response.json().then(data => {
+        const { user } = data as TUserResponse;
+        document.cookie = `token=${user.token};secure`;
+        resolve(user as TUserData);
+      });
+    } else {
+      switch (response.status) {
+        case 422:
+        case 403: {
+          response.json().then(data => {
+            // console.log('handle user response 403', data);
+            const { errors } = data as TUserErrorResponse;
+            resolve(errors);
+          });
+          break;
+        }
+        default: {
+          reject(response.statusText);
+        }
+      }
+    }
+  });
+}
+
 type TRegisterData = {
   username: string,
   email: string,
   password: string,
 };
 
-type TUserData = {
-  email: string,
-  token: string,
-  username: string,
-  bio: string,
-  image: string,
-};
-
 /**
  * returns response body with user's fields
  * throws obj with fields that caused an error
  */
-export async function register({ username, email, password }: TRegisterData): Promise<TUserData> {
-  const result = await sendRequest('/users', {
-    method: 'POST',
-    body: {
-      user: {
-        username,
-        email,
-        password,
+export async function register({ username, email, password }: TRegisterData) {
+  return new Promise<TUserData | TUserErrors>((resolve, reject) => {
+    sendRequest('/users', {
+      method: 'POST',
+      body: {
+        user: {
+          username,
+          email,
+          password,
+        },
       },
-    },
+    })
+      .then(response => {
+        handleUserResponse(response)
+          .then(result => {
+            // eslint-disable-next-line no-console
+            console.log('register fn result', result); // TODO: if dev env
+            resolve(result);
+          })
+          .catch(err => {
+            throw err;
+          });
+      })
+      .catch(err => {
+        // eslint-disable-next-line no-console
+        console.error(err); // TODO: if dev env
+        reject(err);
+      });
   });
-
-  switch (result.status) {
-    case 200:
-    case 201: {
-      document.cookie = `token=${result.body.token};secure`;
-      return (result.body as TUserData);
-    }
-    case 401: // TODO: handle in common sendRequest
-    case 422:
-    default: throw new Error(result); // TODO: handle case when no error fields taken
-  }
 }
 
-export async function login() {
-  const result = await sendRequest('/users/login', {
-    method: 'POST',
-    body: {
-      user: {
-        email: 'string',
-        password: 'string',
-      },
-    },
-  });
-  return result.body;
-}
+type TLoginData = {
+  email: string,
+  password: string,
+};
 
-export async function getUser() {
-  const response = await sendRequest('/user');
-  return response.body;
+export async function login({ email, password }: TLoginData) {
+  return new Promise<TUserData | TUserErrors>((resolve, reject) => {
+    sendRequest('/users/login', {
+      method: 'POST',
+      body: {
+        user: {
+          email,
+          password,
+        },
+      },
+    }).then(response => {
+      handleUserResponse(response)
+        .then(result => {
+          // eslint-disable-next-line no-console
+          console.log('login fn result', result); // TODO: if dev env
+          resolve(result);
+        })
+        .catch(err => {
+          throw err;
+        });
+    })
+      .catch(err => {
+        // eslint-disable-next-line no-console
+        console.error(err); // TODO: if dev env
+        reject(err);
+      });
+  });
 }

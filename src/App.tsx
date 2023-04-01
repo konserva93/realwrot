@@ -1,22 +1,19 @@
 import { useEffect } from 'react';
-import { getUser, login } from './features/auth/api';
-import Register from './features/auth/Register';
+import { Routes, Route } from 'react-router-dom';
+import Auth from './features/auth/Auth';
 import { getStoredUser } from './common/user';
 
 function App() {
   useEffect(() => {
     // noinspection JSIgnoredPromiseFromCall
-    getStoredUser();
+    getStoredUser(); // TODO: try login by token and set current user
   }, []);
 
   return (
-    <>
-      <Register />
-      <div>
-        <button type="button" onClick={() => login()}>login</button>
-        <button type="button" onClick={() => getUser()}>get user</button>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Auth authAction="register" />} />
+      <Route path="login" element={<Auth authAction="login" />} />
+    </Routes>
   );
 }
 

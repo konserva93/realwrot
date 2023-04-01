@@ -23,25 +23,54 @@ export function getCookie(cname: string) {
   return '';
 }
 
+async function tryGetToken(): Promise<string> {
+  // eslint-disable-next-line no-console
+  console.warn('token refresh is not implemented yet'); // TODO: if dev env
+  throw new Error('could not get token');
+}
+
 type TRequestOptions = {
   method?: string,
   body?: Record<string, unknown>;
 };
 
 // TODO: add generic to use in promise
-export async function sendRequest(url: string, options?: TRequestOptions) {
-  const result = await fetch(`https://api.realworld.io/api/${url.replace(/^\/+/, '')}`, { // TODO: use .env var
-    method: options?.method ?? 'GET',
-    body: JSON.stringify(options?.body),
-    headers: {
-      Accept: 'application/json, text/plain',
-      'Content-Type': 'application/json;charset=UTF-8',
-      Authorization: `Bearer ${getCookie('token')}`,
-    },
-  })
-    .then(response => response.json());
-  if (result.status === 401) {
-    console.error('unauthorized'); // TODO: no token. try to re-login, show login dialog if failed
-  }
-  return result;
+export async function sendRequest(
+  url: string,
+  options?: TRequestOptions,
+  isRetry = false,
+) {
+  return new Promise<Response>((resolve, reject) => {
+    fetch(`https://api.realworld.io/api/${url.replace(/^\/+/, '')}`, { // TODO: use .env var
+      method: options?.method ?? 'GET',
+      body: JSON.stringify(options?.body),
+      headers: {
+        Accept: 'application/json, text/plain',
+        'Content-Type': 'application/json;charset=UTF-8',
+        Authorization: `Bearer ${getCookie('token')}`,
+      },
+    })
+      .then(async response => {
+        if (response.status === 401) {
+          try {
+            if (isRetry) {
+              // noinspection ExceptionCaughtLocallyJS
+              throw new Error('unable to authenticate');
+            }
+            const token = await tryGetToken();
+            setCookie('token', token);
+            sendRequest(url, options, true)
+              .then(result => resolve(result))
+              .catch(err => reject(err));
+          } catch (err: unknown) {
+            // eslint-disable-next-line no-console
+            console.log((err as Error).message); // TODO: if dev env
+            document.location.pathname = '/login';
+          }
+        }
+
+        resolve(response);
+      })
+      .catch(err => reject(err));
+  });
 }
