@@ -1,5 +1,7 @@
+import styles from './App.module.scss';
+
 function App() {
-  return <div>ya rodilsya</div>;
+  return <div className={styles.app}>ya rodilsya</div>;
 }
 
 export default App;
