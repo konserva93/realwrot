@@ -1,20 +1,50 @@
-import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Auth from './features/auth/Auth';
-import { getStoredUser } from './common/user';
+import { getStoredUser, setStoredUser } from './common/user';
+import { fetchCurrentUser, isUserData } from './features/auth/api';
 
 function App() {
-  useEffect(() => {
-    // noinspection JSIgnoredPromiseFromCall
-    getStoredUser(); // TODO: try login by token and set current user
-  }, []);
+  const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  return (
-    <Routes>
-      <Route path="/" element={<Auth authAction="register" />} />
-      <Route path="login" element={<Auth authAction="login" />} />
-    </Routes>
-  );
+  useEffect(() => {
+    if (location.pathname !== '/login') {
+      // noinspection JSIgnoredPromiseFromCall
+      const user = getStoredUser();
+      if (!user) {
+        fetchCurrentUser()
+          .then(result => {
+            if (isUserData(result)) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+              setStoredUser(result);
+            } else {
+              navigate('/login');
+            }
+          })
+          .catch(() => {
+            navigate('/login');
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
+      }
+    } else {
+      setIsLoading(false);
+    }
+  }, [location]);
+
+  return isLoading
+    ? <div>loading</div>
+    : (
+      <Routes>
+        <Route path="/" element={<div>main page</div>} />
+        <Route path="register" element={<Auth authAction="register" />} />
+        <Route path="login" element={<Auth authAction="login" />} />
+      </Routes>
+    );
 }
 
 export default App;

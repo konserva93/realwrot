@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TUserData, TUserErrors, isUserData, register, login } from './api';
 import { TUserData as TStoredUserData, setStoredUser } from '../../common/user';
 import Input from '../../ui/Input/Input';
@@ -15,6 +16,8 @@ function Auth({ authAction }: TProps) {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string | string[]>>();
   const [formError, setFormError] = useState<string>('');
 
+  const navigate = useNavigate();
+
   const handleSubmit = useCallback(() => {
     setFieldErrors({});
     setFormError('');
@@ -23,6 +26,7 @@ function Auth({ authAction }: TProps) {
       if (isUserData(data)) {
         setCookie('token', data.token);
         setStoredUser(data as TStoredUserData);
+        navigate('/');
       } else {
         // eslint-disable-next-line no-console
         console.log(`Auth: ${authAction} failed`, data); // TODO: if dev env
@@ -50,7 +54,7 @@ function Auth({ authAction }: TProps) {
           email,
           password,
         });
-      apiCall().then(data => handleResponse(data)) // TODO: pass user data to redux auth section
+      apiCall().then(data => handleResponse(data))
         .catch(err => setFormError(err));
     } else {
       setFormError('required fields not filled');

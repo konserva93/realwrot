@@ -1,4 +1,4 @@
-import { sendRequest } from '../../common/network';
+import { sendRequest, setCookie } from '../../common/network';
 
 export type TUserData = {
   email: string,
@@ -34,7 +34,7 @@ async function handleUserResponse(response: Response) {
     if (response.ok) {
       response.json().then(data => {
         const { user } = data as TUserResponse;
-        document.cookie = `token=${user.token};secure`;
+        setCookie('token', user.token);
         resolve(user as TUserData);
       });
     } else {
@@ -125,6 +125,18 @@ export async function login({ email, password }: TLoginData) {
     })
       .catch(err => {
         // eslint-disable-next-line no-console
+        console.error(err); // TODO: if dev env
+        reject(err);
+      });
+  });
+}
+
+export async function fetchCurrentUser() {
+  return new Promise<TUserData | TUserErrors>((resolve, reject) => {
+    sendRequest('/user')
+      .then(response => resolve(handleUserResponse(response)))
+      .catch(err => {
+      // eslint-disable-next-line no-console
         console.error(err); // TODO: if dev env
         reject(err);
       });

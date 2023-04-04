@@ -2,9 +2,11 @@ export function setCookie(cname: string, cvalue: string, exdays: number | undefi
   const d = new Date();
   if (exdays > 0) {
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    const expires = `expires=${d.toUTCString()}`;
+    document.cookie = `${cname}=${cvalue};${expires};path=/`;
+  } else {
+    document.cookie = `${cname}=${cvalue};path=/`;
   }
-  const expires = `expires=${d.toUTCString()}`;
-  document.cookie = `${cname}=${cvalue};${expires};path=/`;
 }
 
 export function getCookie(cname: string) {
@@ -24,6 +26,7 @@ export function getCookie(cname: string) {
 }
 
 async function tryGetToken(): Promise<string> {
+  // TODO: show login dialog ?
   // eslint-disable-next-line no-console
   console.warn('token refresh is not implemented yet'); // TODO: if dev env
   throw new Error('could not get token');
@@ -65,7 +68,7 @@ export async function sendRequest(
           } catch (err: unknown) {
             // eslint-disable-next-line no-console
             console.log((err as Error).message); // TODO: if dev env
-            document.location.pathname = '/login';
+            throw err;
           }
         }
 
