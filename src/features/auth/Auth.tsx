@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { TUserData, TUserErrors, isUserData, register, login } from './api';
 import { TUserData as TStoredUserData, setStoredUser } from '../../common/user';
 import Input from '../../ui/Input/Input';
+import { Dialog } from '../../ui/Dialog/Dialog';
+import { Button } from '../../ui/Button/Button';
 import { setCookie } from '../../common/network';
+
+import styles from './Auth.module.scss';
 
 type TProps = {
   authAction?: 'login' | 'register';
@@ -68,43 +72,46 @@ function Auth({ authAction }: TProps) {
   }, [authAction]);
 
   return (
-    <dialog
-      title="register"
-      open
-      style={{
-        backgroundColor: 'wheat', display: 'flex', flexDirection: 'column', gap: '16px',
-      }}
-    >
-      {authAction === 'register'
-        ? (
-          <Input
-            onChange={value => setUsername(value)}
-            value={username}
-            title="username"
-            name="username"
-            errors={fieldErrors?.username}
-          />
-        )
-        : null}
-      <Input
-        onChange={value => setEmail(value)}
-        value={email}
-        title="email"
-        name="email"
-        errors={fieldErrors?.email}
-      />
-      <Input
-        onChange={value => setPassword(value)}
-        value={password}
-        title="password"
-        name="password"
-        errors={fieldErrors?.password}
-      />
-      {formError !== ''
-        ? <span>{formError}</span>
-        : null}
-      <button type="button" onClick={handleSubmit}>register</button>
-    </dialog>
+    <div className={styles.container}>
+      <Dialog
+        title="register"
+        open
+      >
+        {authAction === 'register'
+          ? (
+            <Input
+              onChange={value => setUsername(value)}
+              value={username}
+              title="Username"
+              name="username"
+              errors={fieldErrors?.username}
+            />
+          )
+          : null}
+        <Input
+          onChange={value => setEmail(value)}
+          value={email}
+          title="Email"
+          name="email"
+          errors={fieldErrors?.email}
+        />
+        <Input
+          onChange={value => setPassword(value)}
+          value={password}
+          title="Password"
+          name="password"
+          errors={fieldErrors?.password}
+        />
+        {formError !== ''
+          ? <span>{formError}</span>
+          : null}
+        <Button
+          text={authAction === 'register' ? 'Register' : 'Login'}
+          onClick={handleSubmit}
+          className={styles.submit}
+        />
+      </Dialog>
+    </div>
   );
 }
 

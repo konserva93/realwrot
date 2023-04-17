@@ -36,6 +36,18 @@
         "ObjectExpression": { "multiline": true, "minProperties": 1 },
         "ObjectPattern": { "multiline": false }
       }
+    ],
+    "import/prefer-default-export": 0,
+    "max-len": [
+      "error",
+      {
+        "code": 140,
+        "tabWidth": 4,
+        "ignoreComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
     ]
   },
   "env": {

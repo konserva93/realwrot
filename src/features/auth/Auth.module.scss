@@ -1,0 +1,21 @@
+.container {
+  background-image: url('../../assets/pattern.svg');
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  width: 100vw;
+
+  & input {
+    width: 300px;
+  }
+}
+
+.submit {
+  background: rgba(204, 243, 75, 1);
+  color: #000;
+  text-transform: uppercase;
+
+  &:active {
+    background: rgba(204, 243, 75, 0.8);
+  }
+}

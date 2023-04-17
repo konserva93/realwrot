@@ -9,7 +9,7 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: { hot: true, port: 5000, historyApiFallback: true },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.scss'],
+    extensions: ['.tsx', '.ts', '.js', '.scss', '.svg'],
   },
   module: {
     rules: [

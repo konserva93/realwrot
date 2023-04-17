@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './Input.module.scss';
+
 type TCommonInputProps = {
   value?: string,
   onChange: (value: string) => void,
@@ -30,15 +32,17 @@ function inputJSX(inputProps: TCommonInputProps): JSX.Element {
   if (isLabeled(inputProps)) {
     const { value, onChange, title, name } = (inputProps as TLabeledInputProps);
     return (
-      <>
-        <label htmlFor={name}>{title}</label>
+      <div className={styles.wrapper}>
+        <label htmlFor={name} className={styles.label}>{title}</label>
         <input
           type="text"
           onChange={e => onChange(e.target.value)}
           value={value}
           name={name}
+          className={styles.input}
         />
-      </>
+        <span className={styles.underline} />
+      </div>
     );
   }
 
@@ -48,7 +52,12 @@ function inputJSX(inputProps: TCommonInputProps): JSX.Element {
   }
 
   const { value, onChange } = inputProps;
-  return <input type="text" onChange={e => onChange(e.target.value)} value={value} />;
+  return (
+    <div className={styles.wrapper}>
+      <input type="text" onChange={e => onChange(e.target.value)} value={value} />
+      <span className={styles.underline} />
+    </div>
+  );
 }
 
 function Input(props: TCommonInputPropsWithErrors): React.ReactElement;

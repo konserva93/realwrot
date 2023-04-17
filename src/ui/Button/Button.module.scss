@@ -1,0 +1,13 @@
+.button {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 18px;
+  padding: 8px;
+  border: none;
+  font-family: 'Exo 2', sans-serif;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
