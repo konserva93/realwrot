@@ -5,9 +5,32 @@
   font-size: 18px;
   padding: 8px;
   border: none;
-  font-family: 'Exo 2', sans-serif;
+  font-family: inherit;
+  letter-spacing: 0.05em;
 
   &:hover {
     cursor: pointer;
+  }
+
+  &:not(.primary) {
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: 1px solid rgba(102, 67, 177, 1);
+
+    &:active {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(102, 67, 177, 0.8);
+    }
+  }
+}
+
+.primary {
+  background: rgba(204, 243, 75, 1);
+  border: 1px solid rgba(204, 243, 75, 1);
+  color: #000;
+
+  &:active {
+    background: rgba(204, 243, 75, 0.8);
+    border: 1px solid rgba(204, 243, 75, 0.8);
   }
 }

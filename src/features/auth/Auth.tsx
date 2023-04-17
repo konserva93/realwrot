@@ -105,11 +105,17 @@ function Auth({ authAction }: TProps) {
         {formError !== ''
           ? <span>{formError}</span>
           : null}
-        <Button
-          text={authAction === 'register' ? 'Register' : 'Login'}
-          onClick={handleSubmit}
-          className={styles.submit}
-        />
+        <div className={styles.buttons}>
+          <Button
+            text={authAction === 'register' ? 'Register' : 'Login'}
+            onClick={handleSubmit}
+            primary
+          />
+          <Button
+            text="Cancel"
+            onClick={handleSubmit}
+          />
+        </div>
       </Dialog>
     </div>
   );

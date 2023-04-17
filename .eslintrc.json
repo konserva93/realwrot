@@ -48,7 +48,8 @@
         "ignoreStrings": true,
         "ignoreTemplateLiterals": true
       }
-    ]
+    ],
+    "react/function-component-definition": 0
   },
   "env": {
     "es6": true,

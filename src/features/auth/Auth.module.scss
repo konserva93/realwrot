@@ -10,12 +10,8 @@
   }
 }
 
-.submit {
-  background: rgba(204, 243, 75, 1);
-  color: #000;
-  text-transform: uppercase;
-
-  &:active {
-    background: rgba(204, 243, 75, 0.8);
-  }
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
