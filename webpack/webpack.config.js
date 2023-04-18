@@ -40,14 +40,20 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.module\.scss$/i,
+        test: /\.module\.scss$/,
         use: [
           isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
               modules: true,
-              sourceMap: isDevelopment,
+              sourceMap: isDevelopment
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: isDevelopment
             }
           }
         ]

@@ -8,6 +8,7 @@ import { Button } from '../../ui/Button/Button';
 import { setCookie } from '../../common/network';
 
 import styles from './Auth.module.scss';
+import { AnimatedBackground } from '../../ui/Background/AnimatedBackground';
 
 type TProps = {
   authAction?: 'login' | 'register';
@@ -73,6 +74,7 @@ function Auth({ authAction }: TProps) {
 
   return (
     <div className={styles.container}>
+      <AnimatedBackground />
       <Dialog
         title="register"
         open
