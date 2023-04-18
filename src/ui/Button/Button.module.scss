@@ -21,16 +21,27 @@
       background: rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(102, 67, 177, 0.8);
     }
+
+    &:hover:not(:active) {
+      background: rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(102, 67, 177, 0.8);
+    }
   }
 }
 
 .primary {
+  color: #000;
+
   background: rgba(204, 243, 75, 1);
   border: 1px solid rgba(204, 243, 75, 1);
-  color: #000;
 
   &:active {
     background: rgba(204, 243, 75, 0.8);
     border: 1px solid rgba(204, 243, 75, 0.8);
+  }
+
+  &:hover:not(:active) {
+    background: rgba(219, 249, 120, 1);
+    border: 1px solid rgba(219, 249, 120, 1);
   }
 }

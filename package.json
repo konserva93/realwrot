@@ -1,11 +1,14 @@
 {
   "name": "realwrot",
   "version": "1.0.0",
+  "homepage": "https://konserva93.github.io/realwrot",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config webpack/webpack.config.js --open",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix"
@@ -26,6 +29,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.3",
+    "dotenv": "^16.0.3",
     "eslint": "^8.36.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -33,6 +37,7 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.5",
     "node-sass": "^8.0.0",
@@ -47,6 +52,7 @@
     "webpack-dev-server": "^4.13.1"
   },
   "dependencies": {
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.9.0"

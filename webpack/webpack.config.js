@@ -1,8 +1,15 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const dotenv = require('dotenv');
 
 const isDevelopment = process.env.NODE_ENV === "development";
+const env = dotenv.config().parsed;
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
@@ -74,6 +81,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: isDevelopment ? '[name].css' : '[name].[hash].css',
       chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
-    })
+    }),
+    new webpack.ProvidePlugin({
+      ...envKeys,
+      process: 'process/browser',
+    }),
   ],
 }
