@@ -8,7 +8,6 @@ import { Button } from '../../ui/Button/Button';
 import { setCookie } from '../../common/network';
 
 import styles from './Auth.module.scss';
-import { AnimatedBackground } from '../../ui/Background/AnimatedBackground';
 
 type TProps = {
   authAction?: 'login' | 'register';
@@ -66,6 +65,15 @@ function Auth({ authAction }: TProps) {
     }
   }, [username, password, email]);
 
+  const handleSwitchAuthAction = useCallback(() => {
+    setUsername('');
+    setPassword('');
+    setEmail('');
+    setFieldErrors(undefined);
+    setFormError('');
+    navigate(authAction === 'register' ? '/login' : '/register');
+  }, [authAction]);
+
   useEffect(() => {
     if (authAction === 'login') {
       setUsername('');
@@ -74,10 +82,11 @@ function Auth({ authAction }: TProps) {
 
   return (
     <div className={styles.container}>
-      <AnimatedBackground />
       <Dialog
         title="register"
-        open
+        isOpen
+        isForm
+        isModal={false}
       >
         {authAction === 'register'
           ? (
@@ -104,20 +113,27 @@ function Auth({ authAction }: TProps) {
           name="password"
           errors={fieldErrors?.password}
         />
-        {formError !== ''
-          ? <span>{formError}</span>
-          : null}
-        <div className={styles.buttons}>
+        <div>
+          {formError !== ''
+            ? <span className={styles.formError}>{formError}</span>
+            : null}
           <Button
             text={authAction === 'register' ? 'Register' : 'Login'}
             onClick={handleSubmit}
             primary
           />
-          <Button
-            text="Cancel"
-            onClick={handleSubmit}
-          />
         </div>
+      </Dialog>
+      <Dialog
+        isOpen
+        isModal={false}
+        className={styles.hintDialog}
+      >
+        <p>{authAction === 'register' ? 'Already have an account?' : 'Don\'t have an account yet?'}</p>
+        <Button
+          text={authAction === 'register' ? 'Login' : 'Register'}
+          onClick={handleSwitchAuthAction}
+        />
       </Dialog>
     </div>
   );

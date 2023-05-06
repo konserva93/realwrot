@@ -1,19 +1,26 @@
+@import "../../theme";
+
 .dialog {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  background: $darkGunmetal;
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid $lightSlateGray;
+  position: inherit;
+
+  color: $platinum;
+  font-weight: 300;
+  font-size: map-get($fontSize, "regular");
+  line-height: map-get($lineHeight, "regular");
+}
+
+.modal {
   top: 50%; /* fallback */
   top: calc(var(--vh, 1vh) * 50);
   transform: translateY(-50%);
 }
 
-.glass {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-
-  color: #fff;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
 }

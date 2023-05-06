@@ -1,14 +1,25 @@
-$infraRed: #ef476f;
-$orangeYellow: #ffd166;
-$prussianBlue: #073b4c;
+$smokyBlack: #0b0c10;
 
-$blueGreen: #118ab2;
-$pictonBlue: #46B4D9;
-$tealBlue: #2B6F85;
+$darkGunmetal: #1f2833;
+$lightSlateGray: #788799;
+$darkJungleGreen: #1B2026;
 
-$caribbeanGreen: #06d6a0;
-$turquoise: #40EBC0;
-$jungleGreen: #2CA183;
+$silverSand: #c5c6c7;
+$platinum: #E2E2E3;
+$spanishGray: #949595;
 
-$primary: ("main": $caribbeanGreen, "light": $turquoise, "dark": $jungleGreen);
-$secondary: ("main": $blueGreen, "light": $pictonBlue, "dark": $tealBlue);
+$electricBlue: #66fcf1;
+$lightElectricBlue: #85fdf4;
+$darkElectricBlue: #21fbeb;
+
+$keppel: #45a29e;
+$lightKeppel: #62bcb8;
+$darkKeppel: #37827e;
+
+$primary: ("main": $electricBlue, "light": $lightElectricBlue, "dark": $darkElectricBlue);
+$secondary: ("main": $keppel, "light": $lightKeppel, "dark": $darkKeppel);
+
+$fontSize: ("regular": 16px, "secondary": 13px, "caption": 20px, "header": 26px); // next size: 33
+$lineHeight: ("regular": 25px, "secondary": 21px, "caption": 31px, "header": 39px); // next size: 49
+$lineSpacingTop: ("regular": 16px, "secondary": 10px, "caption": 25px, "header": 40px); // next size: 40
+$lineSpacingBottom: ("regular": 6px, "secondary": 4px, "caption": 9px, "header": 15px); // next size: 25

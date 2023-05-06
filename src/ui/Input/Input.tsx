@@ -23,16 +23,16 @@ function isLabeled(props: unknown): props is TLabeledInputProps {
 
 function errorJSX(errors: string | Array<string>): JSX.Element | JSX.Element[] {
   if (typeof errors === 'string') {
-    return <span>{errors}</span>;
+    return <span className={styles.error}>{errors}</span>;
   }
-  return errors.map(errText => <span key={errText}>{errText}</span>);
+  return errors.map(errText => <span className={styles.error} key={errText}>{errText}</span>);
 }
 
 function inputJSX(inputProps: TCommonInputProps): JSX.Element {
   if (isLabeled(inputProps)) {
     const { value, onChange, title, name } = (inputProps as TLabeledInputProps);
     return (
-      <div className={styles.wrapper}>
+      <>
         <label htmlFor={name} className={styles.label}>{title}</label>
         <input
           type="text"
@@ -42,7 +42,7 @@ function inputJSX(inputProps: TCommonInputProps): JSX.Element {
           className={styles.input}
         />
         <span className={styles.underline} />
-      </div>
+      </>
     );
   }
 
@@ -53,10 +53,10 @@ function inputJSX(inputProps: TCommonInputProps): JSX.Element {
 
   const { value, onChange } = inputProps;
   return (
-    <div className={styles.wrapper}>
+    <>
       <input type="text" onChange={e => onChange(e.target.value)} value={value} />
       <span className={styles.underline} />
-    </div>
+    </>
   );
 }
 
@@ -65,7 +65,7 @@ function Input(props: TLabeledInputProps): React.ReactElement;
 function Input(props: TCommonInputPropsWithErrors | TLabeledInputProps) {
   const { errors } = props;
   return (
-    <>
+    <div className={styles.wrapper}>
       {
         inputJSX(props as TCommonInputProps)
       }
@@ -74,7 +74,7 @@ function Input(props: TCommonInputPropsWithErrors | TLabeledInputProps) {
           ? errorJSX(errors)
           : null
       }
-    </>
+    </div>
   );
 }
 

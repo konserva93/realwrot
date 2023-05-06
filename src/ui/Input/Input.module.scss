@@ -1,39 +1,42 @@
+@import "../../theme";
+
 .wrapper {
-  .label {
-    margin-bottom: 12px;
-  }
-}
-
-.input {
-  display: block;
-  line-height: 24px;
-  font-size: 16px;
-  background: none;
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0);
-  color: #fff;
-  margin: 0;
-  font-family: 'Exo 2', sans-serif;
-  letter-spacing: 0.05em;
-  font-weight: 200;
-
-  &:focus, &:focus-visible {
+  .input {
+    display: block;
+    background: none;
     border: none;
-    outline: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.8)
+    border-bottom: 1px solid transparent;
+    color: #fff;
+    margin: 0;
+    font-family: 'Exo 2', sans-serif;
+    letter-spacing: 0.05em;
+    font-weight: 200;
+
+    &:focus, &:focus-visible {
+      border: none;
+      outline: none;
+      border-bottom: 1px solid $platinum;
+    }
   }
-}
 
-.label {
-  display: block;
-  font-size: 18px;
-  font-weight: 300;
-}
+  .label {
+    display: block;
+    margin-bottom: map-get($lineSpacingBottom, "regular");
+    font-weight: 300;
+  }
 
-.underline {
-  margin: 0;
-  display: block;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.8);
-  width: 100%;
+  .underline {
+    margin: 0;
+    display: block;
+    height: 1px;
+    background-color: $silverSand;
+    width: 100%;
+  }
+
+  .error {
+    font-size: map-get($fontSize, "secondary");
+    line-height: map-get($lineHeight, "secondary");
+    margin-top: map-get($lineSpacingTop, "secondary");
+    display: inline-block;
+  }
 }

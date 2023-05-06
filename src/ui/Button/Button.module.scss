@@ -3,8 +3,8 @@
 .button {
   box-sizing: border-box;
   width: 100%;
-  border-radius: 8px;
-  font-size: 18px;
+  border-radius: 6px;
+  font-size: map-get($fontSize, "regular");
   padding: 8px;
   border: none;
   font-family: inherit;
@@ -16,7 +16,7 @@
 
   &:not(.primary) {
     background: rgba(0, 0, 0, 0.2);
-    color: #fff;
+    color: $platinum;
     border: 1px solid map-get($secondary, "main");
 
     &:active {
@@ -32,7 +32,7 @@
 }
 
 .primary {
-  color: #000;
+  color: $smokyBlack;
 
   background: map-get($primary, "main");
   border: 1px solid map-get($primary, "main");

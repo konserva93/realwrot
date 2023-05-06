@@ -1,17 +1,39 @@
+@import "../../theme";
+
 .container {
+  background-image: url('../../assets/pattern.svg');
   display: grid;
   place-content: center;
-  height: 100vh; /* fallback */
-  height: calc(var(--vh, 1vh) * 100);
+  gap: 40px;
+  height: 100vh;
   width: 100vw;
+  background-color: $smokyBlack;
 
   & input {
     width: 300px;
   }
+
+  .formError {
+    font-size: map-get($fontSize, "secondary");
+    line-height: map-get($lineHeight, "secondary");
+    margin-bottom: map-get($lineSpacingBottom, "regular");
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+  }
 }
 
-.buttons {
+.hintDialog {
+  width: 300px;
+  box-sizing: content-box;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: map-get($lineSpacingTop, "regular");
+
+  p {
+    text-align: center;
+    margin: 0;
+    font-size: map-get($fontSize, "regular");
+    line-height: map-get($lineHeight, "regular");
+  }
 }

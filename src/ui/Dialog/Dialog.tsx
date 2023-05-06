@@ -3,27 +3,36 @@ import { classNames } from '../../utils/styles';
 
 import styles from './Dialog.module.scss';
 
-type TProps = {
-  title?: string;
-  open?: boolean;
-  className?: string;
-  children: ReactNode;
+const defaultProps = {
+  title: '',
+  isOpen: true,
+  className: '',
+  isModal: true,
+  isForm: false,
 };
 
-export function Dialog({ title, open, className, children }: TProps) {
+type TProps = {
+  title?: string;
+  isOpen?: boolean;
+  className?: string;
+  children: ReactNode;
+  isModal?: boolean;
+  isForm?: boolean;
+} & typeof defaultProps;
+
+export function Dialog({ title, isOpen, isModal, isForm, className, children }: TProps) {
   return (
     <dialog
       title={title}
-      open={open}
-      className={classNames([styles.dialog, styles.glass, className])}
+      open={isOpen}
+      className={classNames([styles.dialog, className], {
+        [styles.modal]: isModal,
+        [styles.form]: isForm,
+      })}
     >
       {children}
     </dialog>
   );
 }
 
-Dialog.defaultProps = {
-  title: undefined,
-  open: true,
-  className: undefined,
-};
+Dialog.defaultProps = defaultProps;

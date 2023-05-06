@@ -10,7 +10,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (location.pathname !== '/login') {
+    if (location.pathname !== '/login' && location.pathname !== '/register') {
       // noinspection JSIgnoredPromiseFromCall
       const user = getStoredUser();
       if (!user) {
