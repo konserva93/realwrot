@@ -3,34 +3,27 @@
 .wrapper {
   .input {
     display: block;
-    background: none;
-    border: none;
-    border-bottom: 1px solid transparent;
-    color: #fff;
+    box-sizing: border-box;
+    border: 1px solid $silverSand;
+    border-radius: 6px;
+    padding: 6px;
+    color: $platinum;
+    background-color: rgba($smokyBlack, 0.3);
     margin: 0;
     font-family: 'Exo 2', sans-serif;
     letter-spacing: 0.05em;
     font-weight: 200;
+    font-size: map-get($fontSize, "regular");
+    line-height: map-get($lineHeight, "regular");
 
     &:focus, &:focus-visible {
-      border: none;
       outline: none;
-      border-bottom: 1px solid $platinum;
+      border-color: $platinum;
     }
-  }
 
-  .label {
-    display: block;
-    margin-bottom: map-get($lineSpacingBottom, "regular");
-    font-weight: 300;
-  }
-
-  .underline {
-    margin: 0;
-    display: block;
-    height: 1px;
-    background-color: $silverSand;
-    width: 100%;
+    &::placeholder {
+      color: $silverSand;
+    }
   }
 
   .error {
@@ -38,5 +31,10 @@
     line-height: map-get($lineHeight, "secondary");
     margin-top: map-get($lineSpacingTop, "secondary");
     display: inline-block;
+    padding-left: 8px;
+
+    &:first-letter {
+      text-transform: capitalize;
+    }
   }
 }

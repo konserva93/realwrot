@@ -17,7 +17,7 @@ function Auth({ authAction }: TProps) {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string | string[]>>();
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string | string[]>>({});
   const [formError, setFormError] = useState<string>('');
 
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ function Auth({ authAction }: TProps) {
         Object.keys(data).forEach(errKey => {
           const keys = errKey.split(' or ');
           keys.forEach(key => {
-            newErrors[key] = data[errKey];
+            newErrors[key] = `${key} ${data[errKey]}`;
           });
         });
         setFieldErrors(newErrors);
@@ -69,7 +69,7 @@ function Auth({ authAction }: TProps) {
     setUsername('');
     setPassword('');
     setEmail('');
-    setFieldErrors(undefined);
+    setFieldErrors({});
     setFormError('');
     navigate(authAction === 'register' ? '/login' : '/register');
   }, [authAction]);
@@ -94,8 +94,7 @@ function Auth({ authAction }: TProps) {
               onChange={value => setUsername(value)}
               value={username}
               title="Username"
-              name="username"
-              errors={fieldErrors?.username}
+              errors={fieldErrors.username}
             />
           )
           : null}
@@ -103,15 +102,13 @@ function Auth({ authAction }: TProps) {
           onChange={value => setEmail(value)}
           value={email}
           title="Email"
-          name="email"
-          errors={fieldErrors?.email}
+          errors={fieldErrors.email}
         />
         <Input
           onChange={value => setPassword(value)}
           value={password}
           title="Password"
-          name="password"
-          errors={fieldErrors?.password}
+          errors={fieldErrors.password}
         />
         <div>
           {formError !== ''

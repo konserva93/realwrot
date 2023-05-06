@@ -4,7 +4,7 @@
   background-image: url('../../assets/pattern.svg');
   display: grid;
   place-content: center;
-  gap: 40px;
+  gap: 1.6em;
   height: 100vh;
   width: 100vw;
   background-color: $smokyBlack;
@@ -20,6 +20,10 @@
     display: inline-block;
     text-align: center;
     width: 100%;
+
+    &:first-letter {
+      text-transform: capitalize;
+    }
   }
 }
 
@@ -29,6 +33,7 @@
   display: flex;
   flex-direction: column;
   gap: map-get($lineSpacingTop, "regular");
+  padding-top: 1em;
 
   p {
     text-align: center;

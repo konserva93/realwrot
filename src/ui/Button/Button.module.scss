@@ -15,17 +15,17 @@
   }
 
   &:not(.primary) {
-    background: rgba(0, 0, 0, 0.2);
+    background: none;
     color: $platinum;
     border: 1px solid map-get($secondary, "main");
 
     &:active {
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba($smokyBlack, 0.3);
       border: 1px solid map-get($secondary, "dark");
     }
 
     &:hover:not(:active) {
-      background: rgba(0, 0, 0, 0.1);
+      background: rgba($smokyBlack, 0.1);
       border: 1px solid map-get($secondary, "light");
     }
   }
