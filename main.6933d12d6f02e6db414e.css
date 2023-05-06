@@ -1,0 +1,155 @@
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/ui/Input/Input.module.scss ***!
+  \*********************************************************************************************************************************************************************************/
+.NzJtkGrdkjKPdy2BxqOm .VhlKuAyWpCgIdVftvg6H {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #c5c6c7;
+  border-radius: 6px;
+  padding: 6px;
+  color: #E2E2E3;
+  background-color: rgba(11, 12, 16, 0.3);
+  margin: 0;
+  font-family: "Exo 2", sans-serif;
+  letter-spacing: 0.05em;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 25px;
+}
+.NzJtkGrdkjKPdy2BxqOm .VhlKuAyWpCgIdVftvg6H:focus, .NzJtkGrdkjKPdy2BxqOm .VhlKuAyWpCgIdVftvg6H:focus-visible {
+  outline: none;
+  border-color: #E2E2E3;
+}
+.NzJtkGrdkjKPdy2BxqOm .VhlKuAyWpCgIdVftvg6H::placeholder {
+  color: #c5c6c7;
+}
+.NzJtkGrdkjKPdy2BxqOm .Irguf8xdBUzd5X_BSBhU {
+  font-size: 13px;
+  line-height: 21px;
+  margin-top: 10px;
+  display: inline-block;
+  padding-left: 8px;
+}
+.NzJtkGrdkjKPdy2BxqOm .Irguf8xdBUzd5X_BSBhU:first-letter {
+  text-transform: capitalize;
+}
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/ui/Dialog/Dialog.module.scss ***!
+  \***********************************************************************************************************************************************************************************/
+.zeDNYnNcSEi2MrT8zzZj {
+  background: #1f2833;
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #788799;
+  padding-top: 1.6em;
+  position: inherit;
+  color: #E2E2E3;
+  font-weight: 300;
+}
+
+.MUqMKwTCuMIJPU73GjF8 {
+  top: 50%; /* fallback */
+  top: calc(var(--vh, 1vh) * 50);
+  transform: translateY(-50%);
+}
+
+.l8rckvDQn46eTM7AxeLc {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6em;
+}
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/ui/Button/Button.module.scss ***!
+  \***********************************************************************************************************************************************************************************/
+.TlYSdkvjy8CvSMMQ0Zfb {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 16px;
+  padding: 8px;
+  border: none;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+}
+.TlYSdkvjy8CvSMMQ0Zfb:hover {
+  cursor: pointer;
+}
+.TlYSdkvjy8CvSMMQ0Zfb:not(.bMdyGIjFgvdLjpOR98tZ) {
+  background: none;
+  color: #E2E2E3;
+  border: 1px solid #45a29e;
+}
+.TlYSdkvjy8CvSMMQ0Zfb:not(.bMdyGIjFgvdLjpOR98tZ):active {
+  background: rgba(11, 12, 16, 0.3);
+  border: 1px solid #37827e;
+}
+.TlYSdkvjy8CvSMMQ0Zfb:not(.bMdyGIjFgvdLjpOR98tZ):hover:not(:active) {
+  background: rgba(11, 12, 16, 0.1);
+  border: 1px solid #62bcb8;
+}
+
+.bMdyGIjFgvdLjpOR98tZ {
+  color: #0b0c10;
+  background: #66fcf1;
+  border: 1px solid #66fcf1;
+}
+.bMdyGIjFgvdLjpOR98tZ:active {
+  background: #21fbeb;
+  border: 1px solid #21fbeb;
+}
+.bMdyGIjFgvdLjpOR98tZ:hover:not(:active) {
+  background: #85fdf4;
+  border: 1px solid #85fdf4;
+}
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/features/auth/Auth.module.scss ***!
+  \*************************************************************************************************************************************************************************************/
+.QJT23MWY35TMOJOsYuKz {
+  background-image: url(6dc58184658254d82718.svg);
+  display: grid;
+  place-content: center;
+  gap: 1.6em;
+  height: 100vh;
+  width: 100vw;
+  background-color: #0b0c10;
+}
+.QJT23MWY35TMOJOsYuKz input {
+  width: 300px;
+}
+.QJT23MWY35TMOJOsYuKz .Zq2Qn0bAqmFf2nOrwNpt {
+  font-size: 13px;
+  line-height: 21px;
+  margin-bottom: 6px;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+.QJT23MWY35TMOJOsYuKz .Zq2Qn0bAqmFf2nOrwNpt:first-letter {
+  text-transform: capitalize;
+}
+
+.pROEWVjlV4WyAAiuuV5T {
+  width: 300px;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 1em;
+}
+.pROEWVjlV4WyAAiuuV5T p {
+  text-align: center;
+  margin: 0;
+  font-size: 16px;
+  line-height: 25px;
+}
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Exo 2", sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi42OTMzZDEyZDZmMDJlNmRiNDE0ZS5jc3MiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUE7RUFDRSxTQUFTO0VBQ1QsVUFBVTtFQUNWLGdDQUFnQztFQUNoQyxzQkFBc0I7QUFDeEIsQyIsInNvdXJjZXMiOlsid2VicGFjazovL3JlYWx3cm90Ly4vc3JjL2luZGV4LnNjc3MiXSwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZzogMDtcbiAgZm9udC1mYW1pbHk6IFwiRXhvIDJcIiwgc2Fucy1zZXJpZjtcbiAgbGV0dGVyLXNwYWNpbmc6IDAuMDVlbTtcbn0iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=*/
