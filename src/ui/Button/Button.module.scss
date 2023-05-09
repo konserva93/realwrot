@@ -17,22 +17,22 @@
   &:not(.primary) {
     background: none;
     color: $platinum;
-    border: 1px solid map-get($secondary, "main");
+    box-shadow: 0 0 0 1px map-get($secondary, "main") inset;
 
     &:not(.isLoading) {
       &:active {
         background: rgba($smokyBlack, 0.3);
-        border: 1px solid map-get($secondary, "dark");
+        box-shadow: 0 0 0 1px map-get($secondary, "dark") inset;
       }
 
       &:hover:not(:active) {
         background: rgba($smokyBlack, 0.1);
-        border: 1px solid map-get($secondary, "light");
+        box-shadow: 0 0 0 1px map-get($secondary, "light") inset;
       }
     }
 
     &.isLoading {
-      border-color: map-get($secondary, "desaturated");
+      box-shadow: 0 0 0 1px map-get($secondary, "desaturated") inset;
     }
 
     svg * {
