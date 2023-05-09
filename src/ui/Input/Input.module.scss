@@ -32,6 +32,7 @@
     margin-top: map-get($lineSpacingTop, "secondary");
     display: inline-block;
     padding-left: 8px;
+    color: $begonia;
 
     &:first-letter {
       text-transform: capitalize;

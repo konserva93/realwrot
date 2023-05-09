@@ -11,13 +11,17 @@ $spanishGray: #949595;
 $electricBlue: #66fcf1;
 $lightElectricBlue: #85fdf4;
 $darkElectricBlue: #21fbeb;
+$desaturatedElectricBlue: #a2c0be;
 
 $keppel: #45a29e;
 $lightKeppel: #62bcb8;
 $darkKeppel: #37827e;
+$desaturatedKeppel: #6a7d7c;
 
-$primary: ("main": $electricBlue, "light": $lightElectricBlue, "dark": $darkElectricBlue);
-$secondary: ("main": $keppel, "light": $lightKeppel, "dark": $darkKeppel);
+$begonia: #FC6671;
+
+$primary: ("main": $electricBlue, "light": $lightElectricBlue, "dark": $darkElectricBlue, "desaturated": $desaturatedElectricBlue);
+$secondary: ("main": $keppel, "light": $lightKeppel, "dark": $darkKeppel, "desaturated": $desaturatedKeppel);
 
 $fontSize: ("regular": 16px, "secondary": 13px, "caption": 20px, "header": 26px); // next size: 33
 $lineHeight: ("regular": 25px, "secondary": 21px, "caption": 31px, "header": 39px); // next size: 49

@@ -46,8 +46,12 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              sourceMap: isDevelopment
+              modules: isDevelopment
+                ? {
+                    localIdentName: '[name]-[local]--[hash:base64:5]',
+                  }
+                : true,
+              sourceMap: isDevelopment,
             }
           },
           {
@@ -72,6 +76,17 @@ module.exports = {
           }
         ]
       },
+      {
+        test: /\.svg$/i,
+        type: 'asset',
+        resourceQuery: /url/, // *.svg?url
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        resourceQuery: { not: [/url/] },
+        use: [{ loader: '@svgr/webpack', options: { icon: true, svgo: false } }],
+      }
     ],
   },
   output: {

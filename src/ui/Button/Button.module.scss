@@ -5,7 +5,7 @@
   width: 100%;
   border-radius: 6px;
   font-size: map-get($fontSize, "regular");
-  padding: 8px;
+  padding: 10px;
   border: none;
   font-family: inherit;
   letter-spacing: 0.05em;
@@ -19,31 +19,51 @@
     color: $platinum;
     border: 1px solid map-get($secondary, "main");
 
-    &:active {
-      background: rgba($smokyBlack, 0.3);
-      border: 1px solid map-get($secondary, "dark");
+    &:not(.isLoading) {
+      &:active {
+        background: rgba($smokyBlack, 0.3);
+        border: 1px solid map-get($secondary, "dark");
+      }
+
+      &:hover:not(:active) {
+        background: rgba($smokyBlack, 0.1);
+        border: 1px solid map-get($secondary, "light");
+      }
     }
 
-    &:hover:not(:active) {
-      background: rgba($smokyBlack, 0.1);
-      border: 1px solid map-get($secondary, "light");
+    &.isLoading {
+      border-color: map-get($secondary, "desaturated");
     }
+
+    svg * {
+      fill: $platinum;
+    }
+  }
+
+  &.isLoading:hover {
+    cursor: default;
   }
 }
 
 .primary {
   color: $smokyBlack;
-
   background: map-get($primary, "main");
-  border: 1px solid map-get($primary, "main");
 
-  &:active {
-    background: map-get($primary, "dark");
-    border: 1px solid map-get($primary, "dark");
+  &:not(.isLoading) {
+    &:active {
+      background: map-get($primary, "dark");
+    }
+
+    &:hover:not(:active) {
+      background: map-get($primary, "light");
+    }
   }
 
-  &:hover:not(:active) {
-    background: map-get($primary, "light");
-    border: 1px solid map-get($primary, "light");
+  &.isLoading {
+    background: map-get($primary, "desaturated");
+  }
+
+  svg * {
+    fill: $smokyBlack;
   }
 }

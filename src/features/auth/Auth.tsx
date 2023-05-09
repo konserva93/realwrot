@@ -19,6 +19,7 @@ function Auth({ authAction }: TProps) {
   const [email, setEmail] = useState<string>('');
   const [fieldErrors, setFieldErrors] = useState<Record<string, string | string[]>>({});
   const [formError, setFormError] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -48,6 +49,8 @@ function Auth({ authAction }: TProps) {
     if ((authAction === 'login' || (authAction === 'register' && username.length > 0))
       && password.length > 0
       && email.length > 0) {
+      setIsSubmitting(true);
+
       const apiCall = authAction === 'register'
         ? () => register({
           username,
@@ -58,8 +61,11 @@ function Auth({ authAction }: TProps) {
           email,
           password,
         });
-      apiCall().then(data => handleResponse(data))
-        .catch(err => setFormError(err));
+
+      apiCall()
+        .then(data => handleResponse(data))
+        .catch(err => setFormError(err))
+        .finally(() => setIsSubmitting(false));
     } else {
       setFormError('required fields not filled');
     }
@@ -116,8 +122,9 @@ function Auth({ authAction }: TProps) {
             : null}
           <Button
             text={authAction === 'register' ? 'Register' : 'Login'}
-            onClick={handleSubmit}
             primary
+            onClick={handleSubmit}
+            isLoading={isSubmitting}
           />
         </div>
       </Dialog>
